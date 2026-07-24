@@ -1,23 +1,68 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gestión de Reservas - Quincho</title>
+    <!-- Vinculamos el CSS acá -->
+    <link rel="stylesheet" href="estilos.css">
+</head>
 <body>
-    <h1>Gestión de Reservas - Quincho</h1>
-    
-    <label>Seleccionar Fecha:</label>
-    <input type="date">
-    
-    <button>Confirmar Reserva</button>
 
-    <script>
-        const boton = document.querySelector('button');
-        const inputFecha = document.querySelector('input');
+    <!-- Encabezado de la página -->
+    <header>
+        <h1>Gestión de Reservas - Quincho</h1>
+    </header>
 
-        boton.addEventListener('click', () => {
-            const fechaSeleccionada = inputFecha.value;
+    <!-- Contenido Principal -->
+    <main>
+        <section id="seccion-formulario">
+            <h2>Nueva Reserva / Consulta</h2>
 
-            if (fechaSeleccionada === "") {
-                alert("Por favor, seleccioná una fecha primero.");
-            } else {
-                alert("¡Front listo! Mandando la fecha " + fechaSeleccionada + " al servidor de Python...");
-            }
-        });
-    </script>
+            <!-- Formulario de carga -->
+            <form id="form-reserva">
+                
+                <!-- 1. Fecha del alquiler -->
+                <div>
+                    <label for="fecha">Fecha del Evento:</label>
+                    <input type="date" id="fecha" name="fecha" required>
+                </div>
+
+                <!-- 2. Datos de la persona -->
+                <div>
+                    <label for="nombre-cliente">Nombre del Cliente / Familiar:</label>
+                    <input type="text" id="nombre-cliente" name="nombre_cliente" placeholder="Ej: Juan Pérez" required>
+                </div>
+
+                <div>
+                    <label for="telefono">Teléfono / WhatsApp:</label>
+                    <input type="tel" id="telefono" name="telefono" placeholder="Ej: 2611234567">
+                </div>
+
+                <!-- 3. Pagos y Señas -->
+                <div>
+                    <label for="monto-sena">Monto de Seña ($):</label>
+                    <input type="number" id="monto-sena" name="monto_sena" placeholder="0" min="0">
+                </div>
+
+                <!-- 4. Estado de la reserva -->
+                <div>
+                    <label for="estado">Estado de la Reserva:</label>
+                    <select id="estado" name="estado">
+                        <option value="pendiente">Pendiente</option>
+                        <option value="senada">Señada</option>
+                        <option value="pagada">Pagada Totalmente</option>
+                    </select>
+                </div>
+
+                <!-- Botón de envío -->
+                <button type="submit" id="btn-guardar">Registrar Reserva</button>
+
+            </form>
+        </section>
+    </main>
+
+    <!-- JavaScript para la lógica futura -->
+    <script src="app.js"></script>
 </body>
+</html>
